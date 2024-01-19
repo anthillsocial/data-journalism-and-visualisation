@@ -21,14 +21,14 @@
  //run once when our index.html file is first loaded
  function setup() {
    let visualisation = createCanvas(560, 600); //width in pixels, height in pixels
-   visualisation.parent("canvas-container");
+   visualisation.parent("canvas-tag"); // See index.html
  
    infoHeader = createP("Click chart to display further information");
-   infoHeader.parent("context-container");
+   infoHeader.parent("context-tag");
    infoHeader.class("date");
  
    infoParagraph = createP();
-   infoParagraph.parent("context-container");
+   infoParagraph.parent("context-tag"); // See index.html
  }
  
  //draw is run in a loop
