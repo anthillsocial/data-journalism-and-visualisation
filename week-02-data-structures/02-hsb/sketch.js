@@ -1,6 +1,6 @@
 /*
-  TASK: Show how the color of a shape changes by
-  drawing a series of shapes, while increasing
+  Working with HSB colour  
+  TASK: Draw a series of shapes while increasing
   either hue, saturation, and brightness each time
 */
 

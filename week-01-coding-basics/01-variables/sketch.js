@@ -1,6 +1,11 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
-         Variables
- * * * * * * * * * * * * * * * * * * * * * * * */
+Variables
+Task: Experiment with changing the values of:
+- r 
+- background()
+- fill()
+- circle()
+* * * * * * * * * * * * * * * * * * * * * * * */
 
 
 //here we will use the 'width' and 'height' variables built-in to p5js to center the ellipses
@@ -9,7 +14,7 @@
 //width/2 = canvas width divided by 2, i.e. half way across the canvas width
 
 //let's set up our own variable to control the radius of the circles
-var r = 400
+let r = 400
 
 //setup is run once when the webpage is first loaded
 function setup() {
