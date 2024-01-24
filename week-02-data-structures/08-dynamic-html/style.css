@@ -9,7 +9,6 @@ body{
     font-size: 2.5rem;
     line-height: 2.8rem;
     color: rgba(245, 245, 245, 1);
-    border-bottom: 1px solid rgba(245, 245, 245, 1);
     padding-bottom: 20px;
   }
   
@@ -24,15 +23,15 @@ body{
   }
   
   p{
-    font-size: 1rem;
-    margin: 10px 0;
     color: rgba(245, 245, 245, 1);
+    font-size: 5em;
+    margin-top:-5em;
+    margin-left:100px;
   }
   
   canvas{
     margin: 0;
     padding: 0;
-    
   }
   
   .highlight{
@@ -43,19 +42,6 @@ body{
   #canvas-tag{
     width: 560px;
     margin-top: 0px;
-  }
-  
-  #canvas-tag p{
-    font-size: 5em;
-    margin-top:-5em;
-  }
-
-  .date{
-    color: #ffe100;
-    font-size: 2rem;
-    font-weight: bold;
-    padding-bottom: 15px;
-    line-height: 2.2rem;
   }
   
   footer{
