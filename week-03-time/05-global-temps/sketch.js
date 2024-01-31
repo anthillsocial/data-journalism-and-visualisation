@@ -9,6 +9,8 @@ let temp = [];
 let year = [];
 let rowIndex = 0;
 
+console.log('Hello tom')
+
 let barWidth = 5; //default thickness for each bar on the chart
 let chartWidth;
 let chartY;
