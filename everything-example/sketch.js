@@ -13,12 +13,6 @@ function preload() {
 function setup() {
   createCanvas(700, 500);
   colorMode(HSB);
-}
-
-function draw() {
-  background(240); // Colour the background  
-  drawHeader();    // Draw the head area
-
   // PREPARE DATA
   let x = 60; // Where to start drawing the graph from
   let y = 450; // Where to start drawing the graph from
@@ -33,6 +27,11 @@ function draw() {
   //ukco2 = getMaxMinNums( [1.5,2,3,4,5,6,7] );
   //ukco2.baseline = -10; 
   //years.baseline = -10; 
+}
+
+function draw() {
+  background(240); // Colour the background  
+  drawHeader();    // Draw the head area
 
   // DRAW THE X and Y AXIS: xPos,yPos,width,max,min,interval,showLastValue,decimalPlaces
   drawXAxis(x, y, setWidth, years, 20, false, 0);
