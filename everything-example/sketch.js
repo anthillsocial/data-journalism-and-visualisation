@@ -5,6 +5,13 @@
   HEADERS: Year,UK,US
 ******************************************************************/
 let dataset;
+let x = 60; // Where to start drawing the graph from
+let y = 450; // Where to start drawing the graph from
+let setWidth = 600; // width of the graph in pixels 
+let setHeight =  300; // height of the graph in pixels 
+let years; 
+let ukco2; 
+let usco2; 
 
 function preload() {
   dataset = loadTable("co2-US-UK.csv", "header");
@@ -14,13 +21,9 @@ function setup() {
   createCanvas(700, 500);
   colorMode(HSB);
   // PREPARE DATA
-  let x = 60; // Where to start drawing the graph from
-  let y = 450; // Where to start drawing the graph from
-  let setWidth = 600; // width of the graph in pixels 
-  let setHeight =  300; // height of the graph in pixels 
-  let years = getMaxMinNums(dataset.getColumn(0)); // Get max/min/clean number values
-  let ukco2 = getMaxMinNums(dataset.getColumn(1)); // Get max/min/clean number values
-  let usco2 = getMaxMinNums(dataset.getColumn(2)); // Get max/min/clean number values
+  years = getMaxMinNums(dataset.getColumn(0)); // Get max/min/clean number values
+  ukco2 = getMaxMinNums(dataset.getColumn(1)); // Get max/min/clean number values
+  usco2 = getMaxMinNums(dataset.getColumn(2)); // Get max/min/clean number values
   
   // TEST DATA (replaces CSV data above)
   //years = getMaxMinNums( [1,2,3,4,5,6,7.0] );
@@ -184,7 +187,7 @@ function drawXAxis(x, y, mywidth, numbers, interval, drawend=false, decplace=nul
   // If a basline variable has been set then adjust the display
   if(numbers.baseline!=null){
     min = numbers.baseline;
-  }
+  }ukco2
   push();
   // Draw the line 
   stroke(18); // Set colour of the line
@@ -222,12 +225,12 @@ function getMaxMinNums(myarray){
   let max = null;
   // Loop through all numbers in the array
   let numbs = myarray.map(function(item){
-    let num = Number(item); // Make sure its a number
-    if(item>max || max==null){max=num} // Calc max
-    if(item<min || min==null){min=num} // Calc min
+    let num = Number(item); // Make sure its a number not a string
+    if(item>max || max==null){max=num} // Save max
+    if(item<min || min==null){min=num} // Save min
     return num;
   })
-  // Return the data
+  // Return the data in a key-value array
   return arr = {
     "max":max, 
     "min":min,
