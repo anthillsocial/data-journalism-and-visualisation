@@ -27,7 +27,7 @@ function draw() {
   //Finally, 'i++' means that every time the instructions are repeated, increment our counter 'i' by one
   //Thus, on the first loop, i=0; on the second loop, i=1; on the third, i=2, etc...
   
-  for(var i=0; i<10; i=i+1){
+  for(let i=0; i<10; i=i+1){
     fill(25*i, 0, 255); //multiply the 'red' fill value by 'i' so that it increases every time the loop is executed
     rect(i*w, 150, w, h); //move each rectangle horizontally to the right each iteration
     
