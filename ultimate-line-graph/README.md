@@ -1,7 +1,7 @@
 # Co2 Emissions
 
 Co2 Emissions Per Capita, in Tonnes (1800-2020).
-Note: Your task is to fix this sketch!
+Contains a template for a line graph.
 
 ## DATA SOURCES:
  
