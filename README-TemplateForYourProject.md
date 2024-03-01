@@ -8,7 +8,7 @@ with a paragraph (or more) of your own text.
 
 ![Main Screenshot Here](PASTE_IMAGE_URL_INSIDE_BRACKETS_HERE)
 
-## Themes of the game
+## Themes of the project
 
 What is the project about? 
 
