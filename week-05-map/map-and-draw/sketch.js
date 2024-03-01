@@ -3,8 +3,8 @@
 
 // Options for map
 const options = {
-  lat: 0,  //initial latitude
-  lng: 0,  //initial longitude
+  lat: 51.425222,  //initial latitude
+  lng: -0.563167,  //initial longitude
   zoom: 3, //initial zoom level
   style: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png' //where we are getting our map tiles from
 }

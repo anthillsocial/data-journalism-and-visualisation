@@ -20,7 +20,7 @@ function mousePressed(){
   //update the content of the paragraph
   let currentdate = new Date(); 
   var datetime = currentdate.getHours() + ":"  
-                + currentdate.getMinutes() + ":" 
-                + currentdate.getSeconds();
+                 + currentdate.getMinutes() + ":" 
+                 + currentdate.getSeconds();
   infoParagraph.html('hello world!\n'+datetime);
 }

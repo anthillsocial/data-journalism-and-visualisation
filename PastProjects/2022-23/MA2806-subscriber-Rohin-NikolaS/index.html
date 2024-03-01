@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>music industry</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+<style>
+  body {font-family: "Times New Roman", Georgia, Serif;}
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Playfair Display";
+    letter-spacing: 5px;
+  
+  }
+  
+ div.a {
+  text-align: justify; /* For Edge */
+  moz-text-align-last: right; 
+  text-align-last: left;
+}
+
+  div.b{
+    margin:10;
+    top:-20px;
+  }
+ul {
+  list-style-image: url('https://cdn.glitch.global/e6fe83e8-03be-4390-9a38-51634d448218/red%20treebullet.png?v=1648069817868');
+
+}
+  
+</style>
+</head>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+    <a href="#home" class="w3-bar-item w3-button">MUSIC INDUSTRY ONLINE  
+</a>
+    <!-- Right-sided navbar links. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="#about" class="w3-bar-item w3-button">Most Popular</a>
+      <a href="#facts" class="w3-bar-item w3-button">Platforms</a>
+      <a href="#development?"class="w3-bar-item w3-button">The Development</a>
+      <a href="#info" class="w3-bar-item w3-button">More Information</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+  <header class="w3-display-container w3-content w3-wide" style="max-width:1600px;min-width:500px" id="home">
+  <img class="w3-image" src="https://cdn.glitch.global/b9f792a0-2c27-4f65-a31e-219d74c11458/Image.jpeg?v=1679508215986" alt="music" width="1600" height="500">
+  <div class="w3-display-bottomleft w3-padding-large w3-opacity">
+<h1 class="w3-xlarge"></h1>
+  </div>
+</header>
+
+  <!-- music-->
+  <div class="w3-row w3-padding-64 w3-center" id="about">
+    <script>
+  function play(){
+       var audio = document.getElementById("audio");
+       audio.play();
+   sound.pause();
+sound.currentTime = 0;
+    myAudio.loop = false;
+  }
+   </script>
+    <!-- most popular song at the moment-->
+      <h1 class="w3-center">What Is The Most Popular Song At The Moment?</h1><br>
+      <h5 class="w3-center">Have A Listen:</h5>
+<img src="https://cdn.glitch.global/b9f792a0-2c27-4f65-a31e-219d74c11458/sound%20icon_-modified.png?v=1678705657653" value="PLAY"  onclick="play()" width="200" height="200" >
+<audio loop id="audio"> <source src="https://cdn.glitch.global/b9f792a0-2c27-4f65-a31e-219d74c11458/Y2Mate.is%20-%20Miley%20Cyrus%20-%20Flowers%20(Official%20Video)-UgkxnH5w6B1XamD38SoKx91705jadIYvcP_i-160k-1655953990462.mp3?v=1678634556136"> </audio>
+    
+    
+    
+    
+    <hr>
+    
+        
+    <div id="canvas-container">
+    <!--THE JS CANVAS WILL BE PLACED INSIDE HERE -->  
+    </div>
+<!-- Page content -->
+<div class="w3-content" style="max-width:1100px">
+
+
+  <!-- About Section -->
+  <div class="w3-row w3-padding-64"id="about">
+   
+    <!--bargraph-->
+    <div class="w1-col m6 w3-padding-large">
+      <h1 class="w3-center">Bar Graph Breakdown!</h1><br>
+      <!-- info sourced from statista -->
+      <div class="a"><p class="w3-large ">
+        The bar graph shows that, with a 51% market share, YouTube Music is the most widely used audio platform in the UK. This indicates that UK listeners are increasingly using the music streaming service offered by the video-sharing platform. With a market share of 55%, Spotify, which is renowned for its individualised playlists and user-friendly UI, is not far behind. With a market share of 21%, Amazon Music is clearly present in the UK market, most likely as a result of its merger with Amazon's Prime membership scheme. With market shares of 15% and 17%, respectively, Apple Music and iTunes demonstrate that, despite continuing to be popular with UK users, they are up against fierce competition from other streaming services. Overall, it is clear that the UK music streaming market is highly competitive, with a variety of platforms vying for the attention of music lovers. 
+        
+<span class="w3-tag w3-light-grey"></span> </p>
+      <p class="w3-large w3-text-grey w3-hide-medium">Explore the webpage to learn more about each music platfrom!</p>
+    </div>
+  </div>
+     </div>
+<hr>
+  
+
+  <div class="w3-row w3-padding-64 w3-content w3-wide " id="counter">
+    
+<div class="b"> </div>     
+                                                                                            
+      <h1 class="w3-center">Artists With The Most Monthly Listeners Of All Time On Spotify Worldwide</h1><br>
+      <h5 class="w3-center">As Of January 2022 (In Millions)</h5>
+    <section class="counters">
+      <div class="container">
+        <div>
+          <i class="fab fa-youtube fa-4x"></i>
+          <div class="counter" data-target="79.6">0</div>
+          <h3>The Weeknd</h3>
+        </div>
+        <div>
+          <i class="fab fa-twitter fa-4x"></i>
+          <div class="counter" data-target="77.8">0</div>
+          <h3>Justin Bieber</h3>
+        </div>
+        <div>
+          <i class="fab fa-facebook fa-4x"></i>
+          <div class="counter" data-target="77.5">0</div>
+          <h3>Ed Sheeran</h3>
+        </div>
+        <div>
+          <i class="fab fa-linkedin fa-4x"></i>
+          <div class="counter" data-target="66.5">0</div>
+          <h3>Dua Lipa</h3>
+        </div>
+      </div>
+    </section>
+      <script src="script.js"></script>
+ 
+
+
+  </div>
+  
+  <hr>
+  
+  <!-- Platforms Section -->
+  <div class="w3-row w3-padding-64" id="facts">
+    <div class="w3-col l6 w3-padding-large">
+      <h1 class="w3-center">Top Platforms!</h1><br>
+
+      
+      <h4>Spotify Music</h4> 
+    <div class="a">  <p class="w3-text-grey">One of the top music streaming services in the globe, Spotify was introduced in 2008. It offers a sizable music library with more than 70 million tracks, as well as features for creating custom playlists, podcasts, and live streaming. The "Discover Weekly" playlist, which selects new music based on a user's listening experience, is one of its distinctive features. The platform also gives users the choice between using it for free with advertisements or paying a monthly fee to use the premium edition without ads.
+      </p></div><br>
+    <br>
+      <h4>Apple Music </h4> 
+      <div class="a"><p class="w3-text-grey"> A music streaming programme called Apple Music was introduced by the tech giant Apple in 2015. It has a user interface that is identical to the well-known iTunes app and provides a library of more than 75 million songs. Apple Music offers radio stations, podcasts, and live events in addition to music. "Apple Music 1," a 24-hour global radio station with top DJs and exclusive material, is one intriguing feature.
+        </p></div><br>
+    <br>
+        <br>
+      
+      
+      <h4>YouTube Music</h4> 
+      <div class="a"><p class="w3-text-grey">The world's largest video-sharing platform, YouTube, debuted its music streaming programme, YouTube Music, in 2018. Both a free and a paid ad-free edition are available. The ability to watch music videos while listening to music is an intriguing feature of YouTube Music, which makes it a fantastic choice for music fans who like visual media. The platform also provides a customised "mixtape" function that creates playlists based on a user's listening preferences.</p> </div><br> 
+    <br>
+   
+        <br>
+      <h4>Amazon Music</h4> 
+     <div class="a"> <p class="w3-text-grey">The e-commerce behemoth Amazon debuted its music streaming service called Amazon Music in 2007. It provides a variety of subscription choices, including a free version with ads, a Prime membership version, and a premium version with extra features. It boasts a music library of over 75 million songs. Amazon's virtual assistant "Alexa," which enables users to control audio playback using vocal commands, is an intriguing feature of Amazon Music. The platform also has a special function dubbed "X-Ray Lyrics" that shows lyrics of songs as they are playing in real time.</p>    
+    </div> </div>
+    
+    <br>
+    <br>
+    <br>
+    <!--images for the platforms-->
+    <div class="w3-col l3 w3-padding-large">
+    <img src="https://cdn.glitch.global/b9f792a0-2c27-4f65-a31e-219d74c11458/spot.png?v=1678713958596"class="w3-round w3-image " alt="Menu" style=style="width:70%;">
+<img src="https://cdn.glitch.global/b9f792a0-2c27-4f65-a31e-219d74c11458/apple.PNG?v=1678713963172" class="w3-round w3-image " alt="Menu" style=style="width:70%;">
+    <img src="https://cdn.glitch.global/b9f792a0-2c27-4f65-a31e-219d74c11458/amazonmusic-702x700-1-600x600.png?v=1678714226945" class="w3-round w3-image " alt="Menu" style=style="width:70%;">
+    <img src="https://cdn.glitch.global/b9f792a0-2c27-4f65-a31e-219d74c11458/ama.PNG?v=1678714298978" class="w3-round w3-image" alt="Menu" style=style="width:70%;">
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Development Section -->
+  <div class="w3-container w3-padding-64" id="development?">
+    <h1>THE DEVELOPMENT</h1><br>
+
+   <div class="a"> <p class="w3-large">Throughout the last two decades, the online music market has seen a dramatic transition that has changed how we listen to and buy music. Music is now more accessible than ever thanks to the internet and the development of digital technology.
+      
+      <p class ="w3-large">
+        The days of buying actual CDs from record shops are long gone; today, music can be quickly streamed or downloaded from a variety of platforms as mentioned above. Due to this, the online music market has experienced rapid expansion, with sales increasing consistently year after year. With websites like SoundCloud and Bandcamp providing a place for musicians to share their work, the growth of online music has also provided independent artists a better platform to reach more people. The way we engage with and enjoy music has generally been transformed by the internet music industry, and this trend appears to be continuing.
+        
+     </p>  </div>
+    
+      <p class ="w3-text-grey w3-large">
+        Here is a list of some major people that have had a massive influence on the development:
+    </p>
+    
+     
+    <ul class = "w3-large">
+       <li>Daniel Ek, founder and CEO of Spotify</li>
+        <li>Jimmy Iovine, co-founder of Beats Electronics and former head of Apple Music
+</li>
+        <li>Steve Jobs, founder and former CEO of Apple, whose iTunes Store revolutionized digital music sales
+</li>
+        <li>Lucian Grainge, CEO of Universal Music Group, one of the "big three" record labels
+</li>
+        <li>Shawn Fanning, co-founder of Napster, the pioneering music file-sharing service
+</li>
+       
+    </ul>
+   
+  <hr>
+      
+
+  
+  <div class="w3-container w3-padding-64" id="info">
+    <h1>Wan't To Find Out Some More?</h1><br>
+  <!--creating two columns-->
+    <div class="row">
+  <div class="column" style="background-color: #001a00;">
+    <h5><b>Did You Know...</b></h5>
+    <p class="w3-large"> 
+    <p> - That streaming now accounts for over 80% of the music industry's revenue?  </p>
+    <p> - That in 2021, TikTok surpassed YouTube as the most popular social media platform for music discovery?</p>
+    <p> - That as of 2021, Apple Music has over 72 million subscribers worldwide?</p>
+    <p> - That the most-followed musician on Instagram as of 2021 is Ariana Grande, with over 256 million followers?</p>
+    <p> - That in 2020, the most-streamed female artist on Spotify was Billie Eilish, with over 8 billion streams?</p>
+    <p> - That the first song to ever be streamed on Spotify was "The Girl Is Mine" by Michael Jackson and Paul McCartney in 2008?</p>
+    <p> - That the most-streamed song of all time on Spotify is "Shape of You" by Ed Sheeran, with over 2.7 billion streams as of 2021?</p>
+    <p> - That hip-hop is now the most popular genre of music in the United States?</p>
+  </div>
+  <div class="column" style="background-color:#001a00;">
+    <h5><b>Will you be surprised if you knew...</b></h5>
+    <p class ="w3-large"> 
+    <p> - That YouTube is the most popular music streaming service in the world, with over 2 billion monthly active users as of 2021? </p>
+    <p> - That the most-watched music video on YouTube is "Despacito" by Luis Fonsi and Daddy Yankee, with over 7 billion views as of 2021?</p>
+    <p> - That in 2020, the most-streamed album on Spotify was "YHLQMDLG" by Bad Bunny, with over 3.3 billion streams?</p>
+    <p> - That as of 2021, there are over 2 million active podcasts available on Apple Podcasts?</p>
+    <p> - That the most popular podcast genre is comedy, followed by society and culture, and news?</p>
+    <p> - That in 2021, TikTok surpassed one billion monthly active users worldwide, with over 80% of users being between the ages of 16 and 34?</p>
+    <p> - That in 2020, the most-followed musician on TikTok was Jason Derulo, with over 46 million followers?</p>
+   
+     
+    
+  
+  </div>
+</div>
+  
+    
+  <!-- Moments Section -->
+  <div class="w3-container w3-padding-64" id="map">
+    <hr>
+    <br>
+    <h1>Legendary Moments In Music History!</h1><br>
+     
+  
+     <p class="w3-text-grey"> Explore one of the two greatest events in music history! 
+      
+      </p><br>
+    <a href= "https://www.radiox.co.uk/artists/beatles/why-did-the-beatles-play-a-rooftop-concert-in-1969/"class="button" style="vertical-align:middle"><span>The Beatles' Rooftop Concert - In January 1969</span> </a>
+    <a href= "https://www.history.com/topics/1960s/woodstock"class="button" style="vertical-align:middle"><span>Woodstock - In August 1969</span> </a>
+    
+    <script src="bargraph.js"></script>
+    
+</body>
+</html>

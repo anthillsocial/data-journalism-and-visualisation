@@ -1,0 +1,108 @@
+/*General Style Code*/
+body {
+  background: url("https://cdn.glitch.global/f82fc12d-fe6f-4a1c-bac4-506e040d81e6/sky1.jpg?v=1677427154167")
+    no-repeat center fixed;
+  background-size: cover;
+  font-family: "Shantell Sans", cursive;
+}
+
+div {
+  margin: 5px;
+}
+
+article {
+  width: 700px;
+  margin: 0 auto;
+}
+
+/*Yellow Headers Code*/
+
+.yellow1 {
+  background: white;
+  opacity: 0.9;
+  border-radius: 25px;
+}
+
+h1.title {
+  color: #ffea94;
+  text-align: center;
+  font-size: 40pt;
+  padding: 10px;
+  -webkit-text-stroke: 0.1px #ffdc50;
+  text-decoration: underline;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.yellow2 {
+  background: white;
+  opacity: 0.9;
+  border-radius: 25px;
+}
+
+h2.subtitle {
+  color: #ffea94;
+  text-align: center;
+  font-size: 28pt;
+  padding: 5px;
+  -webkit-text-stroke: 0.1px #ffdc50;
+  text-decoration: underline;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/*Pink Information Code*/
+
+p.intro {
+  color: #f5b7b1;
+  font-size: 15pt;
+  -webkit-text-stroke: 0.2px #eb7ac0;
+  padding: 5px;
+  padding-left: 15px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+p.info {
+  color: #f5b7b1;
+  font-size: 15pt;
+  -webkit-text-stroke: 0.2px #eb7ac0;
+  padding: 5px;
+  padding-left: 15px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/*Visualisation Information Code*/
+
+.visInfo {
+  color: #D2B4DE;
+  font-size: 15pt;
+  -webkit-text-stroke: 0.2px #eb7ac0;
+  padding: 5px;
+  padding-left: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/*Blue Quote Code*/
+
+h3.quote {
+  color: #85c1e9;
+  font-size: 28pt;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+/* Image Placement Code */
+.image{
+  width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding:10px;
+}

@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
+
+body {
+  background: black;
+  color: white;
+}
+
+#counter {
+  font-family: "poppins", sans-serif;
+
+  /* Push to bottom */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100vh;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+header {
+  flex: 1;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header h1 {
+  font-size: 60px;
+}
+
+.counters {
+  background: black;
+  color: white;
+  padding: 40px 20px;
+  border: 3px red solid;
+}
+
+.counters .container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 30px;
+  text-align: center;
+}
+
+.counters i {
+  color: #3eb489;
+  margin-bottom: 5px;
+}
+
+.counters .counter {
+  font-size: 45px;
+  margin: 10px 0;
+}
+
+@media (max-width: 700px) {
+  .counters .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .counters .container > div:nth-of-type(1),
+  .counters .container > div:nth-of-type(2) {
+    border-bottom: 1px #3eb489 solid;
+    padding-bottom: 20px;
+  }
+}
+
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: black;
+  border: solid;
+  color: white;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 600px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+ul {
+  text-align: center;
+  list-style-position: inside;
+}
+
+/* two equal columns that float next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 2px;
+  border: solid;
+}
