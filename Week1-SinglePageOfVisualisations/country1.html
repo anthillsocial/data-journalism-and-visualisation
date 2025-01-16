@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P5 JS - Country example</title>
+    <link rel="stylesheet" type="text/css" href="p5-js/p5-style.css">
+    <script src="p5-js/p5.min.js"></script>
+    <script src="p5-js/p5.sound.min.js"></script>
+  </head>
+
+  <body>
+
+    <script>
+
+      let countryName = 'CANADA'; // Qualitatitve data
+      let countrySize = 40; // Quantitative data
+      // console.log(countryName, countrySize);
+      
+      function setup() {
+        createCanvas(windowWidth, windowHeight);
+        noLoop(); // No need for the sketch to loop as it doesnt involve animation
+      }
+
+      function draw() {
+        // Set the background color 
+        background('red');
+        // Draw the circle
+        noStroke();
+        let x = windowWidth/2;  // Centre of the canvas
+        let y = windowHeight/2; // Centre of the canvas
+        let scaled = countrySize*4; // Scale the size value
+        // scaled = countrySize; // Try the unscaled value
+        circle(x, y, scaled);
+  
+        //Draw the text
+        textSize(scaled/5);
+        textAlign(CENTER, CENTER);
+        text(countryName, x, y);
+        text(countrySize+'m', x, y+scaled/5);
+      }
+      
+      // Ensure the visualisation will resize if the window is resized
+      function windowResized() {
+        resizeCanvas(windowWidth, windowHeight);  
+      }
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P5 JS - Country example</title>
+    <link rel="stylesheet" type="text/css" href="p5-js/p5-style.css">
+    <script src="p5-js/p5.min.js"></script>
+    <script src="p5-js/p5.sound.min.js"></script>
+  </head>
+
+  <body>
+
+    <script>
+
+      let countryNames = ['USA', 'CANADA','MEXICO'];
+      let countrySizes = [334, 200, 128];
+      let countryColors = ['red', 'green', 'blue'];
+      // console.log(countryNames[2]);
+      
+      function setup() {
+        createCanvas(windowWidth, windowHeight);
+        noLoop();
+      }
+
+      function draw() {
+        background('black');
+        // Draw the circle
+        // show the 3 countries
+        for( let i=0; i<3; i++) {
+          noStroke();
+          let x = random(100,windowWidth-100);  
+          let y = random(100,windowHeight-100); 
+          let scaled = countrySizes[i]/1.7; // Scale the size value
+          fill(countryColors[i]);
+          circle(x, y, scaled);
+    
+          //Draw the text
+          fill('white');
+          textSize(scaled/5);
+          textAlign(CENTER, CENTER);
+          text(countryNames[i], x, y);
+          text(countrySizes[i]+'m', x, y+scaled/5);
+        }
+      }
+      
+      // Ensure the visualisation will resize if the window is resized
+      function windowResized() {
+        resizeCanvas(windowWidth, windowHeight);  
+      }
+
+    </script>
+  </body>
+</html>

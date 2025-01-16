@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            /* CSS: PAGE LAYOUT */
+            html, body{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            .row {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                width: 100%;
+                margin-bottom:1em;
+            }
+            .column {
+                display: flex;
+                flex-direction: column;
+                flex-basis: 100%;
+                flex: 1;
+                padding:10px;
+            }
+            iframe{
+                height:300px;
+                width:600px; 
+                border:1px solid #ccc;
+                overflow: hidden; /* Hide scrollbars */
+            }
+            .source{
+                font-size:0.6em;
+                color: #6b6b6b;
+                width:600px; 
+            }
+            footer{
+                margin-top:2em;
+                padding:2em;
+                border-top:1px solid #ccc;
+                color: #a5a5a5;
+                font-size:0.8em;
+            }
+        </style>
+    </head>
+    <body>
+
+        <h1>Introduction to data vis</h1>
+
+        <p>
+            This web page provides a template illustrating 
+            how to incorporate multiple visualisations 
+            and paragraphs of text into a single HTML page. 
+        </p>
+
+        <!--Two colums using flexbox CSS: https://dev.to/drews256/ridiculously-easy-row-and-column-layouts-with-flexbox-1k01 -->
+        <div class='row'>
+            <div class='column'>
+                This visualisation connects the population 
+                of Canada with the size of the circle and text.
+            </div>
+            <div class='column'>
+                  <!-- Load country1.html into the page -->
+                  <iframe src="country1.html"> </iframe>
+                  <div class="source">
+                    Population of country in millions. Data sources: United States Census Bureau, World Bank
+                  </div>
+            </div>
+        </div>
+
+        <!--Two colums using flexbox CSS: https://dev.to/drews256/ridiculously-easy-row-and-column-layouts-with-flexbox-1k01 -->
+        <div class='row'>
+            <div class='column'>
+                This visualisation uses arrays to generate a list
+                of countries organised by size. The iframe uses
+                a style attribute to set the width of the visualisation.
+            </div>
+            <div class='column'>
+                <!-- Load country2.html into the page -->
+                <iframe style="width:500px;" src="country2.html"> </iframe>
+                <div class="source" style="width:500px;">
+                    Population of country in millions. Data sources: United States Census Bureau, World Bank
+                </div>
+            </div>
+        </div>
+
+
+        <!--Two colums using flexbox CSS: https://dev.to/drews256/ridiculously-easy-row-and-column-layouts-with-flexbox-1k01 -->
+        <div class='row'>
+            <div class='column'>
+                Can you insert the country3.html visualisation? 
+            </div>
+            <div class='column'>
+                <!-- Load country2.html into the page -->
+                <iframe style="width:500px;height:500px;" src="country3.html"> 
+                    scrolling="no"
+                </iframe>
+                <div class="source" style="width:500px;">
+                    Population of country in millions. Data sources: United States Census Bureau, World Bank
+                </div>
+            </div>
+        </div>
+
+
+        <footer>
+            The examples are evolved from <a href="https://editor.p5js.org/bernatferragut/collections/lrBvc-eGu">this collection of p5.js 
+                sketches</a> which act an an introduction to datavisualisation 
+                concepts. 
+        </footer>
+    </body>
+</html>

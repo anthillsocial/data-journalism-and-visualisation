@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P5 JS - Country example</title>
+    <link rel="stylesheet" type="text/css" href="p5-js/p5-style.css">
+    <script src="p5-js/p5.min.js"></script>
+    <script src="p5-js/p5.sound.min.js"></script>
+  </head>
+
+  <body>
+
+    <script>
+      let scale = 0.7; 
+      let countryNames = ['USA', 'CANADA','MEXICO'];
+      let countrySizes = [334, 200, 128];
+      let countryColors = ['red', 'green', 'blue'];
+      let countryX = [100, 300, 400];
+      let countryY = [55, 200, 300];
+      let slider, divSize; 
+      // console.log(countryNames[2]);
+      
+      function setup() {
+        createCanvas(windowWidth, 400);
+        // Create an HTML slider
+        label = createDiv('Scale: '+scale);
+        slider = createSlider(0.2, 1.8, scale, 0.1);
+      }
+
+      function draw() {
+        background('black');
+
+        // Create the slider
+        scale = slider.value(); 
+        label.html('Scale: '+scale);
+
+        // show the 3 countries
+        for( let i=0; i<3; i++) {
+          // Draw a circle
+          noStroke();
+          let x = countryX[i];
+          let y = countryY[i];
+          let scaled = scale*countrySizes[i]; // Scale the size value
+          fill(countryColors[i]);
+          circle(x, y, scaled);
+    
+          //Draw the text
+          fill('white');
+          textSize(scaled/5);
+          textAlign(CENTER, CENTER);
+          text(countryNames[i], x, y);
+          text(countrySizes[i]+'m', x, y+scaled/5);
+
+          
+        }
+      }
+      
+      // Ensure the visualisation will resize if the window is resized
+      function windowResized() {
+        resizeCanvas(windowWidth, 400);  
+      }
+
+    </script>
+  </body>
+</html>
