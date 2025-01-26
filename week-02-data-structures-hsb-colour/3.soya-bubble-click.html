@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P5 JS - Country example</title>
+    <link rel="stylesheet" type="text/css" href="p5-js/p5-style.css">
+    <script src="p5-js/p5.min.js"></script>
+    <script src="p5-js/p5.sound.min.js"></script>
+  </head>
+
+  <body>
+
+    <script>
+
+/* TASKS:
+    1. Experiment with the scale.
+    2. Try to  change the spacing of the bubbles. 
+    3. Can you change the mouse-over colour of the
+       circles and text?  
+*/
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+DATASET TITLE: World Soybean Production
+DATA SOURCE: Our World In Data
+LINK TO DATA: https://ourworldindata.org/explorers/global-food?tab=chart&facet=none&Food=Soybeans
+DATA HEADERS: Product,Country,Year,Land Use (ha)
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+let dataset; //we use this to refer to our datafile
+let scaleFactor = 0.000003;
+let currRow = -1; //currently selected row. -1 means no row has been selected
+
+function preload(){
+  //load the table into our dataset variable, specify it's a csv file, flag that it has a header row
+  dataset = loadTable("data/soybean-2018-land-use.csv", "csv", "header");
+}
+
+function setup(){
+  createCanvas(windowWidth, windowHeight);
+}
+
+function draw(){
+  background(55);
+  
+  fill(245);
+  textSize(24);
+  text("Land Use for Soybean Production per Country, 2018", width/2 , 100);
+  
+  for(let row=0; row < dataset.getRowCount(); row++){
+
+    let countryName = dataset.getString(row, 1); //row, col
+    let landUse = dataset.getNum(row, 3); //row, col
+    let scaledLandUse = landUse*scaleFactor;
+    let x = 100+(row*100); // Locate the bubbles
+    let y = height/2;
+    
+    // Draw the circles for each country/row in the dataset
+    let distance = dist(mouseX, mouseY, x, y);
+    
+    //the mouse is hovering over the circle!
+    if(distance < scaledLandUse/2){
+      fill(255, 225, 95); //fill yellow
+      if(mouseIsPressed){
+        currRow = row; // the row we're interacting with
+      }
+    }else{
+      //the mouse is NOT hovering over the circle
+      fill(245); //fill grey
+    }
+    ellipse(x, y, scaledLandUse, scaledLandUse);
+    
+    
+    textAlign(CENTER);
+    textSize(12);
+    noStroke();
+    text(countryName, x, y+100);
+    text(landUse, x, y+115);
+  }
+  
+  text(245);
+  textSize(16);
+  if(currRow > -1){
+    let captionText = dataset.getString(currRow, 4);
+    text(captionText, width/2, height-75);
+  }
+}
+
+  
+// Ensure the visualisation will resize if the window is resized
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);  
+}
+
+
+
+    </script>
+  </body>
+</html>

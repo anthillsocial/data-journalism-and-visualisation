@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P5 JS - Country example</title>
+    <link rel="stylesheet" type="text/css" href="p5-js/p5-style.css">
+    <script src="p5-js/p5.min.js"></script>
+    <script src="p5-js/p5.sound.min.js"></script>
+  </head>
+
+  <body>
+
+    <script>
+
+/*
+  Working with HSB colour  
+  TASK: 
+  1. Try using hue, saturation, and brightness.
+  2. Can you work out what "\n" means in the displayed text string?
+  3. Research what the following function means:
+      map(value, 0, 2000, 30, 80);
+    and see what it does in the code below. 
+*/
+
+// An array of numbers
+// All numbers are between 1 & 2000
+myData = [90, 200, 500, 800, 1000, 1500, 2000];
+
+function setup() {
+  createCanvas(windowWidth, windowHeight); //width in pixels, height in pixels
+  colorMode(HSB);
+  noStroke();
+  rectMode(CENTER); 
+  background(95);
+  noLoop(); // Don't use processor cycles if you dont have to.
+}
+
+function draw() {
+
+  // Used to calculate equal spacing
+  let x = 0; 
+  let div = int(windowWidth / myData.length); 
+
+  // Loop through all the items in the array
+  for (let i=0; i<myData.length; i++){
+
+    // Ensure the values are re-mapped
+    // from 0 to 200 TO between 30 TO 80 (provides a nice gradient)
+    let value = myData[i]; 
+    let mapped = map(value, 0, 2000, 30, 80); // See p5.js map function
+    
+    // Define a HSB fill color: hue, saturation, brightness
+    fill(0, mapped, 100); 
+
+    // Draw a rectangle (calc spacing)
+    let spacing = 2; 
+    let y = windowHeight/2; 
+    let w = div-spacing; 
+    let h = windowHeight-100; // 
+    x = (i*div)+(div/2); // Calculate evenly spread x values 
+    rect(x, y, w, h); //x, y, w, h
+
+    // Write the origina;l value and mapped value
+    textSize(24);
+    fill(0, 10, 200); 
+    text(value+" -> \n"+mapped, x-70, 100);
+  }
+
+ 
+}
+
+
+  
+// Ensure the visualisation will resize if the window is resized
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);  
+}
+
+
+
+    </script>
+  </body>
+</html>

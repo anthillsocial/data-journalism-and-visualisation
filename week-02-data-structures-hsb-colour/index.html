@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            /* CSS: PAGE LAYOUT */
+            html, body{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            iframe{
+                width:100%; 
+                height:500px;
+                border:1px solid #ccc;
+                overflow: hidden; /* Hide scrollbars */
+            }
+            .source{
+                font-size:0.6em;
+                color: #6b6b6b;
+            }
+            footer{
+                margin-top:2em;
+                padding:2em;
+                border-top:1px solid #ccc;
+                color: #a5a5a5;
+                font-size:0.8em;
+            }
+        </style>
+    </head>
+    <body>
+
+        <!--
+        TASKS
+        1. The "3. Bubble chart with mouse click"   visualisation does not properly display in this page. Can you work out how to fix it? 
+        -->
+
+        <h1>Data structures</h1>
+        
+        <p>
+        The following p5.js data visualisations illustrate ways of working with HSB, arrays, and CSV data. View the code for each example and find the TASKS to complete. Consider the level at which
+        </p>
+
+        <!---HSB COLOUR--->
+        <div class='row'>
+            <h2>1. Working with the HSB colour space</h2>
+            <p>This visualisationis maps one range of values in an array (between 0 and 2,000) to a saturation range (30 to 80).</p>
+            <iframe src="1.HSB.html"> </iframe>
+        </div>
+        
+
+        <div class='row'>
+            <h2>2. Load an external CSV file.</h2>
+            <iframe src="2.loadExternalCSV.html"></iframe>
+            <div class="source">...</div>
+        </div>
+
+        <div class='row'>
+            <h2>3. Bubble chart with mouse click</h2>
+            <iframe style="height:200px;" src="3.soya-bubble-click.html"> </iframe>
+        </div>
+
+        <footer>
+            Play with these examples!
+        </footer>
+    </body>
+</html>

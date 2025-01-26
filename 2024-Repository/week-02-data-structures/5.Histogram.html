@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P5 JS - Country example</title>
+    <link rel="stylesheet" type="text/css" href="p5-js/p5-style.css">
+    <script src="p5-js/p5.min.js"></script>
+    <script src="p5-js/p5.sound.min.js"></script>
+  </head>
+
+  <body>
+
+    <script>
+/*
+  DATA: Sample Data
+  HEADERS: Year,Value,Value2
+  NOTE: A histogram is a graphical display of data 
+  using bars of different heights. It is similar to a 
+  Bar Chart, but a histogram groups numbers into ranges.
+  See: https://www.mathsisfun.com/data/histograms.html
+*/
+
+let dataset = [];
+let margin = 50;
+
+function preload() {
+  dataset = loadTable("data/sample.csv", "header");
+}
+
+function setup() {
+  createCanvas(windowWidth, windowHeight); 
+  noStroke();
+  colorMode(HSB);
+}
+
+function draw() {
+  background(241, 5, 95);
+
+  // Loop through every row in the dataset
+  for (let row = 0; row < dataset.getRowCount(); row++) {
+    //get value from column 1
+    let y1 = dataset.getString(row, 1);
+    //get value from column 2
+    let y2 = dataset.getString(row, 2);
+  
+    //value from column 1
+    fill(241, 45, 65);
+    rect(margin + row * 50, height, 40, -y1);
+    
+    //stack value from column 2 on top
+    fill(15, 75, 90);
+    rect(margin + row * 50, height-y1, 40, -y2);
+  }
+
+  // Do loop the draw function!
+  noLoop(); 
+}
+ 
+// Ensure the visualisation will resize if the window is resized
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);  
+}
+
+    </script>
+  </body>
+</html>

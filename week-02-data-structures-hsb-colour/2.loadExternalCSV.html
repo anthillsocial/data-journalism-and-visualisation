@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P5 JS - Country example</title>
+    <link rel="stylesheet" type="text/css" href="p5-js/p5-style.css">
+    <script src="p5-js/p5.min.js"></script>
+    <script src="p5-js/p5.sound.min.js"></script>
+  </head>
+  <body>
+    <script>
+
+/*
+  Loading an external data file.
+
+  TASKS: 
+  1. Can you find where the countryData.csv data file is?
+  2. Experiment with "let row = 5;" and predict which row
+     of data will display. 
+  3. Can you make a random row of data display? 
+  4. Can you set the colour of text using HSB? 
+  5. Can you map the hue/saturation/brightness of the    
+     text to the land use value? 
+     
+*/
+
+// Variable to store the data in
+let csvData;
+
+function preload() {
+  // Load SCV as a table of data
+  csvData = loadTable("data/countryData.csv", "csv", "header");
+}
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  frameRate(1); // Set a slow framerate so the sketch runs sloowwwwww
+}
+
+function draw() {
+  background(220);
+
+  // Restart the draw loop if data hasn't loaded yet
+  let rowsOfData = csvData.getRowCount(); 
+  if (rowsOfData == 0) return;
+
+  // Grab a row of CSV data to display
+  let row = 5;
+  let country = csvData.getString(row, "Country");
+  let land = csvData.getNum(row, "Land Use");
+ 
+  //row = int( random(0, rowsOfData-1) ); // select a random row
+
+  // Display text
+  textAlign(LEFT); 
+  textSize(55);
+  text("ROWS OF DATA: "+rowsOfData, 100, (windowHeight/2)-60);  
+  text("DISPLAYING ROW: "+row, 100, (windowHeight/2));  
+  text("COUNTRY: "+country, 100, windowHeight/2+60);
+  text("LAND USE: "+land+" hectares", 100, windowHeight/2+120);
+}
+
+  
+// Ensure the visualisation will resize if the window is resized
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);  
+}
+
+
+
+    </script>
+  </body>
+</html>
