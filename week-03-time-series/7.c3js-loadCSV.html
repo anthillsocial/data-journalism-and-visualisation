@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+    <!-- Load c3.css -->
+    <link href="c3-js/c3.css" rel="stylesheet">
+
+    <!-- Load d3.js and c3.js -->
+    <script src="c3-js/d3.v5.min.js" charset="utf-8"></script>
+    <script src="c3-js/c3.min.js"></script>
+</head>
+<body>
+
+    <!-- 
+    TASK
+    1. Research the meaning of 'var'
+       (hint, var is considered outdated, you can use 'let' instead). 
+    2. Can you find a better type of C3 visualisation
+       for the climate data? 
+    
+    -->
+
+    <div id="chart"></div>
+
+    <script>
+
+        // First load JSON data
+        c3.generate({
+            bindto: '#chart', 
+            data: {
+                url: 'data/c3test.json',
+                mimeType: 'json'
+            }
+        });
+
+        // After three seconds load CSV data 
+        setTimeout(function () {
+            c3.generate({
+                bindto: '#chart', 
+                data: {
+                    url: 'data/climate-data.csv',
+                    mimeType: 'csv'
+                }
+            });
+        }, 3000); // The 3000 = time in milliseconds
+
+    </script>
+
+</body>
+</html>

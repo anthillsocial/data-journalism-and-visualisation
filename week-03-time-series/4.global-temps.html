@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P5 JS - Country example</title>
+    <link rel="stylesheet" type="text/css" href="p5-js/p5-style.css">
+    <script src="p5-js/p5.min.js"></script>
+    <script src="p5-js/p5.sound.min.js"></script>
+  </head>
+
+  <body>
+
+    <script>
+
+/*
+  CLIMATE CHANGE DATA taken from 
+  https://datahub.io/core/global-temp#readme
+
+
+  TASKS
+  1. Explore this code - its complexity starts to illustrate
+     the point at which other visualisation libraries would be more appropriate...
+  2. Adjust the margins so the visualisation fits closely
+     to an iframe area.
+
+
+*/
+
+let tempData = [];
+let temp = [];
+let year = [];
+let rowIndex = 0;
+
+console.log('Hello tom')
+
+let barWidth = 5; //default thickness for each bar on the chart
+let chartWidth;
+let chartY;
+let margin = 50;
+
+let maxTemp = 0;
+let minTemp = 0;
+
+function preload() {
+  tempData = loadTable("data/annual-gistemp-1900.csv", "header");
+}
+
+//run once when our index.html file is first loaded
+function setup() {
+  createCanvas(windowWidth, windowHeight); //width in pixels, height in pixels
+  noStroke();
+  colorMode(HSB);
+
+  rowIndex = 0;
+  for (let i = 0; i < tempData.getRowCount(); i += 2) {
+    year[rowIndex] = tempData.getString(i, 1);
+    temp[rowIndex] = tempData.getNum(i, 2);
+    rowIndex++;
+  }
+
+  maxTemp = max(temp);
+  minTemp = min(temp);
+  
+  console.log(
+    "Num rows: " +
+      rowIndex +
+      "; Max Temp: " +
+      maxTemp +
+      "; Min Temp: " +
+      minTemp
+  );
+  reset();
+}
+
+function reset(){
+  chartWidth = width - margin * 2;
+  barWidth = chartWidth / rowIndex;
+  chartY = height/2+50;
+}
+
+function draw() {
+  background(245, 1, 98);
+  
+  drawBars();
+  drawChartLabel();
+  drawAxes();
+}
+
+function drawBars() {
+  for (let i = 0; i < rowIndex; i++) {
+    let x = width - margin - barWidth - i * barWidth;
+    let y = chartY;
+    let w = barWidth;
+    let h = -temp[i] * 100;
+
+    fill(128 - temp[i] * 128, 100, 100);
+    rect(x, y, w, h);
+  }
+}
+
+function drawChartLabel() {
+  noStroke();
+  textAlign(LEFT);
+  fill(0, 100, 0);
+  textSize(20);
+  text("Global Temperature, 1880-2016", margin, margin);
+  textSize(12);
+  text("Deviation from 20th century average", margin, margin + 20);
+}
+
+function drawAxes() {
+  stroke(0);
+  //x axis
+  line(margin - 10, chartY, width - margin, chartY);
+  //y axis
+  line(margin, chartY + 100, margin, chartY - 100);
+
+  //labels on y axis
+  textAlign(CENTER);
+  noStroke();
+  textSize(12);
+  fill(0);
+  text("+1C", margin, chartY - 110);
+  text("-1C", margin, chartY + 118);
+
+  textAlign(RIGHT);
+  text("avg", margin - 15, chartY + 3);
+}
+
+
+
+  
+// Ensure the visualisation will resize if the window is resized
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);  
+  reset();
+}
+
+
+
+    </script>
+  </body>
+</html>

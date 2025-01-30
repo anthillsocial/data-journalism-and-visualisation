@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P5 JS - Country example</title>
+    <link rel="stylesheet" type="text/css" href="p5-js/p5-style.css">
+    <script src="p5-js/p5.min.js"></script>
+    <script src="p5-js/p5.sound.min.js"></script>
+  </head>
+
+  <body>
+
+    <script>
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ DATASET TITLE: What the data is about?
+ DATA SOURCE: what organisation/person collected the data?
+ LINK TO DATA: where did you get the data from?
+ HEADERS: what are the headers of the dataset?
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+ 
+ TASKS:  
+  1. Can you find the error in the parties.csv dataset?
+  2. Add text to the lollipops grabbed from the 'context' column? 
+  3. Connect the size of the circles to the number of attendees.   
+  4. Can you source, create, and load alternative data? 
+  */
+
+let scale = 3;
+let dataset;
+
+function preload(){
+  dataset = loadTable("data/parties.csv", "header");
+}
+
+//run once when our index.html file is first loaded
+function setup() {
+  createCanvas(windowWidth, windowHeight); //width in pixels, height in pixels
+}
+
+//draw is run in a loop
+function draw() {
+  background(245);
+  textSize(20);
+
+  // Draw the base line
+  let yPos = height-200;
+  stroke(55);
+  line(0, yPos, width, yPos);
+
+  // Draw vertical lines and circles
+  let yInc = 20;
+  for(let row=0; row<dataset.getRowCount(); row++){
+
+    // Grab data - date,dayIndex,location,attendees,context
+    let date = dataset.getString(row, 'date');
+    let dayIndex = dataset.getNum(row, 'dayIndex');
+    let attendees = 10; 
+    //let attendees = dataset.getNum(row, 'attendees');
+    
+    // Calculate position variables 
+    let lineHeight = windowHeight/3;
+    let xPos = 100+dayIndex*scale;
+
+    // Draw the lollipop
+    stroke(55);
+    line(xPos, yPos, xPos, lineHeight);
+    fill(245);
+    ellipse(xPos, lineHeight, attendees);
+
+    // Draw the dates text
+    noStroke();
+    fill(245);
+    rect(xPos-10, yPos-yInc-17, 20); // covers the line so we can see the text
+    fill(10);
+    text(date, xPos-50, yPos-yInc);
+    yInc += 40;
+  }
+
+}
+
+  
+// Ensure the visualisation will resize if the window is resized
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);  
+}
+
+
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P5 JS - Country example</title>
+    <link rel="stylesheet" type="text/css" href="p5-js/p5-style.css">
+    <script src="p5-js/p5.min.js"></script>
+    <script src="p5-js/p5.sound.min.js"></script>
+  </head>
+
+  <body>
+
+    <script>
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ DATASET TITLE: 
+ DATA SOURCE: 
+ LINK TO DATA: 
+ HEADERS:
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+ 
+ TASKS:  
+  1. Add dataset information above. 
+  2. Can you fix this sketch so the visualisation resizes 
+     when the window iframe is re-sized? 
+*/
+
+
+let dataset; 
+let size = 80;
+let columns;
+
+function preload() {
+  dataset = loadTable("data/climate-data.csv", "header");
+}
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  noStroke();
+  colorMode(HSB);
+  columns = floor(width/size);
+}
+
+function draw() {
+  background(0, 0, 95);
+  textSize(10);
+
+  let row = 0; 
+  let rowInc = 0; 
+  for (let i = 0; i < dataset.getRowCount(); i++) {
+    // Source,Year,Mean
+    let temp = dataset.getNum(i, "Mean");
+    let year = dataset.getNum(i, "Year");
+
+    // Calc xPosition of the squares
+    let x = rowInc*size;//(i*size) % width;
+    // Calc yPosition of the squares
+    let y = row*size;  //floor((i * size) / width) * size;
+    rowInc++; 
+    if(rowInc==columns){
+      row++; 
+      rowInc = 0;
+    }
+
+    // Draw squares and text
+    fill(180 - temp * 180, 60, 90);
+    rect(x, y, size, size);
+    fill(20);
+    textSize(20);
+    text(year, x, y+5, size, size);
+  }
+
+  // Darw text at the bottom
+  fill(0);
+  textAlign(LEFT);
+  textSize(16);
+  text("Global Temperature Averages", 5, height - 30);
+  textSize(10);
+  text("Deviations from 20th Century Average", 5, height - 10);
+
+  displayKey();
+  noLoop();
+}
+
+function displayKey() {
+  let tempColumn = dataset.getColumn("Mean");
+
+  let minTemp = min(tempColumn);
+  let maxTemp = max(tempColumn);
+  textSize(10);
+
+  fill(180 - minTemp * 180, 60, 90);
+  rect(width - 35, height - 35, 30, 30);
+  textAlign(CENTER);
+  fill(0, 0, 100);
+  text(minTemp, width - 35, height - 25, 30, 30);
+
+  fill(180, 60, 90);
+  rect(width - 70, height - 35, 30, 30);
+  textAlign(CENTER);
+  fill(0, 0, 100);
+  text(0, width - 70, height - 25, 30, 30);
+
+  fill(180 - maxTemp * 180, 60, 90);
+  rect(width - 105, height - 35, 30, 30);
+  textAlign(CENTER);
+  fill(0, 0, 100);
+  text(maxTemp, width-105, height-25, 30, 30);
+}
+
+  
+// Ensure the visualisation will resize if the window is resized
+function windowResized() {
+  //resizeCanvas(windowWidth, windowHeight);  
+  //columns = floor(width/size); // reclaculate how many columns we can have
+}
+
+
+
+    </script>
+  </body>
+</html>
