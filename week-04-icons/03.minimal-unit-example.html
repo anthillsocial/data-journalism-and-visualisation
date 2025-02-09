@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="p5-js/p5.min.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="p5-js/p5-style.css">
+    <script src="p5-js/p5.min.js"></script>
+    <script src="p5-js/p5.sound.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit&family=Readex+Pro&display=swap" rel="stylesheet">
+      </head>
+  </head>
+  <body>
+
+    <script>
+
+    
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ DATASET TITLE: what is the data about?
+ DATA SOURCE: what organisation/person collected the data?
+ LINK TO DATA: where did you get the data from?
+ HEADERS: what are the headers of the dataset?
+
+TASK: 
+1. Can you display the number of Internet users per 100 people for the
+country of Cyprus using data from the "internet-users-per-100-people.csv"
+file in the data directory? The data originates from this project: 
+https://github.com/ckan/ckanext-mapviews/tree/master
+2. Can you swap the circles for images? 
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+let numRows = 10;
+let numColumns = 10;
+let hue = 0;
+let percent = 1;
+let size = 50;
+
+function setup(){
+  createCanvas(windowWidth, windowHeight);
+  colorMode(HSB);
+  hue = random(0, 360);
+  strokeWeight(2);
+}
+
+function draw(){
+  background(hue, 45, 85);
+  
+  let index = 0;
+  
+  // Draw a grid
+  for(let i = 0; i < numRows; i++){
+    for(let j = 0; j < numColumns; j++){
+      let x = 75 + (j*size);
+      let y = 75 + (i*size);
+      if(index>=percent){
+        // Draw empty circle 
+        noFill();
+        stroke(0, 0, 100);
+      }else{
+        // Filled circles 
+        noStroke();
+        fill(0, 0, 100);
+      }
+      ellipse(x, y, size-5, size-5);
+      index++;
+    }
+  }
+  
+  fill(0, 0, 100);
+  textFont('Outfit');
+  textSize(48);
+  text(percent+" in 100...", 57, height-60);
+}
+
+// Change % on a mousclick
+function mouseClicked(){
+    percent = floor(random(100)) 
+ }
+
+// Ensure the visualisation will resize if the window is resized
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);  
+  reset();
+}
+
+
+    </script>
+
+  </body>
+</html>

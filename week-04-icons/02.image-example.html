@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="p5-js/p5-style.css">
+    <script src="p5-js/p5.min.js"></script>
+    <script src="p5-js/p5.sound.min.js"></script>
+  </head>
+  <body>
+    <script>
+let img; // Declare variable 'img'.
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  img = loadImage('images/party.png'); // Load image
+}
+
+function draw() {
+  // Display image at actual size at x, y 
+  //image(img, 0, 0);
+  // Displays half size image at x, y, w, h
+  image(img, 20, 20, img.width/3, img.height/3);
+  // Displays quater size image at x, y, w, h
+  image(img, 200, 200, img.width/4, img.height/4);
+  // Displays image at x, y, w, h
+  image(img, 350, 350, 50, 50);
+  
+}
+
+// Ensure the visualisation will resize if the window is resized
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);  
+  reset();
+}
+
+
+    </script>
+  </body>
+</html>
+

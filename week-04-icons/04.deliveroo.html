@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="p5-js/p5-style.css">
+    <script src="p5-js/p5.min.js"></script>
+    <script src="p5-js/p5.sound.min.js"></script>
+  </head>
+  <body>
+
+    <script>
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ DATASET TITLE: Deliveroo Riders - Pay
+ DATA SOURCE: TBIJ
+ LINK TO DATA: https://www.thebureauinvestigates.com/stories/2021-03-25/deliveroo-riders-earning-as-little-as-2-pounds
+ HEADERS: N/A
+
+ TASKS: 
+ 1. Can you source and display a different graphic for 
+ the % that earn less?
+ 2. Can you use a different HSB colour? 
+ 3. Can you make the text display like so, with just 56% and £10 in different colours: 
+    Currently 56% of Deliveroo Riders 
+    earn less than £10 per hour 
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+ let lessThanMinWage = 41; //percentage receiving less than minimum wage
+
+ let numRows = 10;
+ let numColumns = 10;
+ let size = 50;
+ 
+ let iconHighlight;
+ let icon;
+ let dataset;
+ 
+ let currRowIndex = 0;
+ let percentageRiders = 0;
+ let payThreshold = 0;
+ 
+ function preload(){
+   dataset = loadTable("data/deliveroo.csv", "header");
+   iconHighlight = loadImage("images/deliveroo_selected.png")
+   icon = loadImage("images/deliveroo.png");
+ }
+ 
+ function setup(){
+  createCanvas(windowWidth, windowHeight);
+   imageMode(CENTER); //draw images from their centrepoint
+   payThreshold = dataset.getNum(currRowIndex, 0);
+   percentageRiders = dataset.getNum(currRowIndex, 1);
+ }
+ 
+ function draw(){
+   background(245);
+   let index = 0;
+   
+   for(let row = 0; row < numRows; row++){
+     for(let col = 0; col < numColumns; col++){
+       let x = size/2+(col*size);
+       let y = size/2+(row*size);
+       
+       fill(55);
+       noStroke();
+       if(index >= 100 - percentageRiders){
+         noTint();
+         image(iconHighlight, x, y, size, size);
+       }else{
+         tint(205, 196);
+         image(icon, x, y, size, size);
+       }
+       
+       index++;
+       
+       // Number the grid
+       //fill(255);
+       //text(index, x, y);
+     }
+     
+     fill(0, 205, 188);
+     textSize(36);
+     textFont('Inter');
+ 
+     text(percentageRiders+"%", 10, height-160);
+     fill(55);
+     text("of Deliveroo Riders earn less than", 10, height-113);
+     fill(0, 205, 188);
+     text("£"+payThreshold+" per hour", 10, height-20);
+   }
+ }
+
+ // Ensure the visualisation will resize if the window is resized
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);  
+  reset();
+}
+
+    </script>
+  </body>
+</html>
