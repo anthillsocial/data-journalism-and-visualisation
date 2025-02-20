@@ -1,0 +1,5 @@
+[
+    { "lat": 51.49127, "lng": -0.050994, "popup": "Marker loaded from data/markers.json" },
+    { "lat": 48.8566, "lng": 2.3522, "popup": "Marker in Paris loaded from data/markers.json" },
+    { "lat": 40.7128, "lng": -74.0060, "popup": "Marker in New York loaded from data/markers.json" }
+]

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!--
+	TASK:
+	Before looking at this page follow the instructions on Notion
+	to create you own working example. Just use this as a reference!
+
+	-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Leaflet Map Basics</title>
+    <link rel="stylesheet" href="leaflet/leaflet@1.9.4.css"/>
+    <script src="leaflet/leaflet@1.9.4.js"></script>
+    <style>
+		html, body, #map,
+		.leaflet-container {
+			height: 100%;
+			width: 100%;
+			max-width: 100%;
+			max-height: 100%;
+            margin:0px;
+		}
+        #sidebar{
+			position:absolute; 
+			display:none;
+			top:0px; 
+			width:300px; 
+			right:0px;
+			background-color:white; 
+			height:100vh; 
+			z-index:700; /*change to 10000 to hide attribution*/
+		}
+		#sidebar div{
+			padding:10px;
+		}
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <div id="sidebar"></div>
+    <script>
+    
+// INITIALISE THE MAP
+// Create a new map object and set a default starting point
+const map = L.map('map').setView([51.505, -0.09], 13);
+
+// Make the map run run with openstreetmap
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+	// ADD A MARKER 
+	const marker = L.marker([51.5, -0.09]).addTo(map)
+		.bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
+
+    // ADD A CIRCLE 
+    const circle = L.circle([51.508, -0.11], {
+		color: 'red',
+		fillColor: '#f03',
+		fillOpacity: 0.5,
+		radius: 500
+	}).addTo(map).bindPopup('I am a circle.');
+
+	// ADD A SHAPE 
+	const polygon = L.polygon([
+		[51.509, -0.08],
+		[51.503, -0.06],
+		[51.51, -0.047]
+	]).addTo(map).bindPopup('I am a polygon.');
+
+	// ADD A POPUP ON ITS OWN
+	const popup = L.popup()
+		.setLatLng([51.513, -0.09])
+		.setContent('I am a standalone popup.')
+		.openOn(map);
+
+	// ADD A CLICK EVENT TO THE MAP
+	map.on('click', MapClick);
+	function MapClick(e) {
+		popup.setLatLng(e.latlng)
+			 .setContent(`You clicked the map at ${e.latlng.toString()}`)
+			 .openOn(map);
+	}
+
+	// CREATE A POPUP SIDEBAR
+	let sidebar = document.getElementById("sidebar");
+	sidebar.onclick = hideSidebar; 
+
+	function ShowSidebar(e) {
+		console.log(e); 
+		sidebar.innerHTML = e.target.options.sidebarText;
+		sidebar.style.display = "block";
+	}
+	function hideSidebar() {
+		sidebar.style.display = "none";
+	}
+	const circle2 = L.circle([51.482576, -0.08176], {
+		color: 'green',
+		fillColor: 'green',
+		fillOpacity: 0.5,
+		radius: 500,
+		sidebarText: "<div>Hello!!</div>"
+	}).addTo(map).on('click', ShowSidebar);
+
+    // LOAD EXTERNAL DATA
+    fetch('data/markers.json')
+    .then(response => response.json())
+    .then(data => {
+        data.forEach(location => {
+            L.marker([location.lat, location.lng]).addTo(map).bindPopup(location.popup);
+        });
+    })
+    .catch(error => console.error('Error loading markers:', error));
+    </script>
+</body>
+</html>
