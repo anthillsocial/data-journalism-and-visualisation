@@ -1,0 +1,71 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Leaflet.curve plugin demo</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" />
+<style>
+#map { height: 500px; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+
+<script src="leaflet/leaflet@1.9.4.js"></script>
+<script src="leaflet/Tween.min.js"></script>
+<script src="leaflet/leaflet.curve.js"></script>
+
+<!--
+<script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet-src.js"></script>
+<script src="src/Tween.min.js"></script>
+<script src="src/leaflet.curve.js"></script>
+-->
+
+<script>
+// Example from: https://github.com/elfalem/Leaflet.curve?tab=readme-ov-file
+// And: https://elfalem.github.io/Leaflet.curve/
+//set up map
+var map = L.map('map').setView([46.05, 11.05], 3);
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
+
+//use a mix of renderers
+let customPane = map.createPane("customPane");
+let canvasRenderer = L.canvas({pane:"customPane"});
+customPane.style.zIndex = 399; // put just behind the standard overlay pane which is at 400
+
+
+// Function to generate curved line between two points
+function createCurve(latlngA, latlngB, theColour){
+	let latlngs = [];
+	let latlng1 = latlngA,
+		latlng2 = latlngB;
+	let offsetX = latlng2[1] - latlng1[1],
+		offsetY = latlng2[0] - latlng1[0];
+	let r = Math.sqrt( Math.pow(offsetX, 2) + Math.pow(offsetY, 2) ),
+		theta = Math.atan2(offsetY, offsetX);
+	let thetaOffset = (3.14/10);
+	let r2 = (r/2)/(Math.cos(thetaOffset)),
+		theta2 = theta + thetaOffset;
+	let midpointX = (r2 * Math.cos(theta2)) + latlng1[1],
+		midpointY = (r2 * Math.sin(theta2)) + latlng1[0];
+	let midpointLatLng = [midpointY, midpointX];
+	latlngs.push(latlng1, midpointLatLng, latlng2);
+	let pathOptions = {
+		color: theColour,
+		weight: 2
+	}
+	return curvedPath = L.curve(['M', latlng1,
+					'Q', midpointLatLng,
+					latlng2
+					], pathOptions).addTo(map);
+}
+
+// Draw some curves
+createCurve([40.0, -23.0], [55.0, 26], 'rgba(255,0,0,0.6)'); 
+let green = createCurve([40.0, -23.0], [50.0, 60], 'rgba(0,255,0,0.6)'); 
+// Add some dots along the curve
+green.trace([0, 0.25, 0.75, 1]).forEach(i => L.circle(i, {color: 'green'}).addTo(map));
+
+</script>
+
+</body>
+</html>
